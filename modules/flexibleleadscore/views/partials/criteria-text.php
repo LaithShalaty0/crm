@@ -1,0 +1,2 @@
+<?php $value = isset($criterion) ? $criterion['flexibleleadscore_criteria_value'] : '' ?>
+<?php echo render_input('flexibleleadscore_criteria_value', '', $value, 'text', ['placeholder' => flexiblels_lang('criteria-value')]);

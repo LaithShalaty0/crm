@@ -87,8 +87,8 @@ $report_heading = '';
 								<select name="hide_columns[]" id="hide_columns" class="selectpicker no-margin" data-width="100%" multiple>
 									<option value=""><?php echo _l('dropdown_non_selected_tex'); ?></option>
 									<option value="name" <?php echo (in_array('name',$hide_columns)?'selected':'')?>><?php echo _l('leads_dt_name'); ?></option>
-									<option value="company" <?php echo (in_array('company',$hide_columns)?'selected':'')?>><?php echo _l('lead_company'); ?></option>
-									<option value="email" <?php echo (in_array('email',$hide_columns)?'selected':'')?>><?php echo _l('leads_dt_email'); ?></option>
+									<!-- <option value="company" <?php echo (in_array('company',$hide_columns)?'selected':'')?>><?php echo _l('lead_company'); ?></option> -->
+									<!-- <option value="email" <?php echo (in_array('email',$hide_columns)?'selected':'')?>><?php echo _l('leads_dt_email'); ?></option> -->
 									<option value="phonenumber" <?php echo (in_array('phonenumber',$hide_columns)?'selected':'')?>><?php echo _l('leads_dt_phonenumber'); ?></option>
 									<option value="country" <?php echo (in_array('country',$hide_columns)?'selected':'')?>><?php echo _l('lead_country'); ?></option>
 									
@@ -197,8 +197,8 @@ $report_heading = '';
 								
 									<th>#</th>
 									<th class="<?php echo (in_array('name',$hide_columns)?'not-export':'')?>"><?php echo _l('leads_dt_name'); ?></th>
-									<th class="<?php echo (in_array('company',$hide_columns)?'not-export':'')?>"><?php echo _l('lead_company'); ?></th>
-									<th class="<?php echo (in_array('email',$hide_columns)?'not-export':'')?>"><?php echo _l('leads_dt_email'); ?></th>
+									<!-- <th class="<?php echo (in_array('company',$hide_columns)?'not-export':'')?>"><?php echo _l('lead_company'); ?></th> -->
+									<!-- <th class="<?php echo (in_array('email',$hide_columns)?'not-export':'')?>"><?php echo _l('leads_dt_email'); ?></th> -->
 									<th class="<?php echo (in_array('phonenumber',$hide_columns)?'not-export':'')?>"><?php echo _l('leads_dt_phonenumber'); ?></th>
 									<th class="<?php echo (in_array('country',$hide_columns)?'not-export':'')?>"><?php echo _l('lead_country'); ?></th>
 								<?php
@@ -226,8 +226,8 @@ $report_heading = '';
 									<td><?php echo htmlspecialchars($no++);?></td>
 									<td data-order="<?php echo htmlspecialchars($lead['name']); ?>"><a href="<?php echo admin_url('leads/index/'.$lead['id']); ?>" onclick="init_lead(<?php echo htmlspecialchars($lead['id']); ?>); return false;"><?php echo htmlspecialchars($lead['name']); ?></a>
 									</td>
-									<td><?php echo htmlspecialchars($lead['company']); ?></td>
-									<td><?php echo htmlspecialchars($lead['email']); ?></td>
+									<!-- <td><?php echo htmlspecialchars($lead['company']); ?></td> -->
+									<!-- <td><?php echo htmlspecialchars($lead['email']); ?></td> -->
 									<td><?php echo htmlspecialchars($lead['phonenumber']); ?></td>
 									<td><?php echo htmlspecialchars(get_country_name($lead['country'])); ?></td>
 								<?php

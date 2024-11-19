@@ -9,6 +9,7 @@ class Custom_reports extends AdminController
         parent::__construct();
         $this->load->model('leads_model');
         $this->load->model('custom_reports_model');
+        $this->load->model('call_logs_model');
     }
 
     public function index()
@@ -81,4 +82,58 @@ class Custom_reports extends AdminController
             show_error('Invalid request method.');
         }
     }
+
+    // public function call_logs_overview()
+    // {
+    //     $this->load->model('call_logs_model');
+
+    //     $start_date = $this->input->get('start_date') ?? date('Y-m-01');
+    //     $end_date = $this->input->get('end_date') ?? date('Y-m-t');
+
+    //     $data['total_calls'] = $this->call_logs_model->get_total_calls($start_date, $end_date);
+    //     $data['call_duration'] = $this->call_logs_model->get_call_duration($start_date, $end_date);
+    //     $data['call_outcomes'] = $this->call_logs_model->get_call_outcomes($start_date, $end_date);
+    //     $data['lead_sources_statuses'] = $this->call_logs_model->get_lead_sources_statuses($start_date, $end_date);
+    //     $data['salesperson_performance'] = $this->call_logs_model->get_salesperson_performance($start_date, $end_date);
+    //     $data['calls_results'] = $this->call_logs_model->get_calls_results($start_date, $end_date);
+    //     $data['lead_reports'] = $this->call_logs_model->get_lead_reports($start_date, $end_date);
+
+    //     // Pass the date variables to the view
+    //     $data['start_date'] = $start_date;
+    //     $data['end_date'] = $end_date;
+
+    //     $data['title'] = _l('call_logs_overview');
+    //     $this->load->view('admin/custom_reports/call_logs_overview', $data);
+    // }
+
+    public function call_logs_overview()
+    {
+        $this->load->model('call_logs_model');
+
+        $start_date = $this->input->get('start_date') ?? date('Y-m-01');
+        $end_date = $this->input->get('end_date') ?? date('Y-m-t');
+
+        // Fetch data from the model
+        $data['successful_calls'] = $this->call_logs_model->get_successful_calls($start_date, $end_date);
+        $data['unsuccessful_calls'] = $this->call_logs_model->get_unsuccessful_calls($start_date, $end_date);
+        $data['total_calls'] = $this->call_logs_model->get_total_calls($start_date, $end_date);
+        $data['call_results'] = $this->call_logs_model->get_call_results($start_date, $end_date);
+        $data['data_source_analysis'] = $this->call_logs_model->get_data_source_analysis($start_date, $end_date);
+
+        // Cumulative data
+        $data['cumulative_successful_calls'] = $this->call_logs_model->get_cumulative_successful_calls();
+        $data['cumulative_unsuccessful_calls'] = $this->call_logs_model->get_cumulative_unsuccessful_calls();
+        $data['cumulative_total_calls'] = $this->call_logs_model->get_cumulative_total_calls();
+        $data['cumulative_call_results'] = $this->call_logs_model->get_cumulative_call_results();
+        $data['cumulative_data_source_analysis'] = $this->call_logs_model->get_cumulative_data_source_analysis();
+
+        $data['start_date'] = $start_date;
+        $data['end_date'] = $end_date;
+
+        $data['title'] = _l('call_logs_overview');
+        $this->load->view('admin/custom_reports/call_logs_overview', $data);
+    }
+
+
+
 }

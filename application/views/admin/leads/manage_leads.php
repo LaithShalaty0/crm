@@ -216,14 +216,14 @@
                                     'th_attrs' => ['id' => 'th-consent', 'class' => 'not-export'],
                                  ];
                               }
-                              $_table_data[] = [
-                               'name'     => _l('lead_company'),
-                               'th_attrs' => ['class' => 'toggleable', 'id' => 'th-company'],
-                              ];
-                              $_table_data[] = [
-                               'name'     => _l('leads_dt_email'),
-                               'th_attrs' => ['class' => 'toggleable', 'id' => 'th-email'],
-                              ];
+                            //   $_table_data[] = [
+                            //    'name'     => _l('lead_company'),
+                            //    'th_attrs' => ['class' => 'toggleable', 'id' => 'th-company'],
+                            //   ];
+                            //   $_table_data[] = [
+                            //    'name'     => _l('leads_dt_email'),
+                            //    'th_attrs' => ['class' => 'toggleable', 'id' => 'th-email'],
+                            //   ];
                               $_table_data[] = [
                                'name'     => _l('leads_dt_phonenumber'),
                                'th_attrs' => ['class' => 'toggleable', 'id' => 'th-phone'],

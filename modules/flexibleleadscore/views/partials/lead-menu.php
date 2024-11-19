@@ -1,0 +1,1 @@
+<li><a href="#flexibleleadscore" data-toggle="tab"><?php echo flexiblels_lang('lead-scoring'); ?></a></li>

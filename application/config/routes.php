@@ -193,3 +193,6 @@ $route['survey/(:num)/(:any)'] = 'surveys/participate/index/$1/$2';
 if (file_exists(APPPATH . 'config/my_routes.php')) {
     include_once (APPPATH . 'config/my_routes.php');
 }
+
+$route['admin/custom_reports/call_logs_overview'] = 'custom_reports/call_logs_overview';
+

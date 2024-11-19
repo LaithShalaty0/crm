@@ -110,12 +110,12 @@
                                     <?php if ($fixedlist == true) { ?>
                                     <?php if ($id == 'leads') {
                                echo '<th>' . _l('leads_dt_name') . '</th>';
-                               echo '<th>' . _l('lead_company') . '</th>';
+                            //    echo '<th>' . _l('lead_company') . '</th>';
                            } elseif ($id == 'clients') {
                                echo '<th>' . _l('client_firstname') . '</th>';
                                echo '<th>' . _l('client_lastname') . '</th>';
                                echo '<th>' . _l('clients_list_full_name') . '</th>';
-                               echo '<th>' . _l('clients_company') . '</th>';
+                            //    echo '<th>' . _l('clients_company') . '</th>';
                            } elseif ($id == 'staff') {
                                echo '<th>' . _l('staff_dt_name') . '</th>';
                            }
@@ -241,13 +241,13 @@ $(function() {
         ServerParams, [0, 'asc']);
     appValidateForm($('#add_single_email_form'), {
         email: {
-            required: true,
+            required: false,
             email: true
         }
     }, add_single_email_to_mail_list);
     appValidateForm($('#import_emails_form'), {
         file_xls: {
-            required: true,
+            required: false,
             extension: "xls|xlsx"
         }
     });

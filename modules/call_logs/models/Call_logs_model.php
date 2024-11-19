@@ -12,14 +12,15 @@ class Call_logs_model extends App_Model
     }
 
     /* Get the count for staff. */
-    public function get_staff_counts($staffid){
+    public function get_staff_counts($staffid)
+    {
         $count = 0;
 
         $sql = "SELECT count(`staffid`) as total_count
-                from ".db_prefix()."call_logs where staffid= '".$staffid."' " ;
+                from " . db_prefix() . "call_logs where staffid= '" . $staffid . "' ";
         $query = $this->db->query($sql);
         $row = $query->row();
-        if (isset($row)){
+        if (isset($row)) {
             $count = $row->total_count;
         }
 
@@ -38,14 +39,14 @@ class Call_logs_model extends App_Model
             $call_log = $this->db->get(db_prefix() . 'call_logs')->row();
             $call_log->contact_name = '';
             $call_log->contact_email = '';
-            if(isset($call_log->contactid) && $call_log->contactid != ''){
+            if (isset($call_log->contactid) && $call_log->contactid != '') {
                 $this->load->model('clients_model');
                 $contact = $this->clients_model->get_contact($call_log->contactid);
-                if($contact){
-                    $call_log->contact_name = $contact->firstname.' '.$contact->lastname;
+                if ($contact) {
+                    $call_log->contact_name = $contact->firstname . ' ' . $contact->lastname;
                     $call_log->contact_email = $contact->email;
                 }
-                
+
             }
             return $call_log;
         }
@@ -73,18 +74,18 @@ class Call_logs_model extends App_Model
     {
         unset($data['lead_id']);
         $data['datestart'] = date('Y-m-d');
-        $data['staffid']      = $data['staffid'] == '' ? 0 : $data['staffid'];
-        $data['call_start_time']    = to_sql_date($data['call_start_time'], true);
-        $data['call_end_time']      = to_sql_date($data['call_end_time'], true);
+        $data['staffid'] = $data['staffid'] == '' ? 0 : $data['staffid'];
+        $data['call_start_time'] = to_sql_date($data['call_start_time'], true);
+        $data['call_end_time'] = to_sql_date($data['call_end_time'], true);
 
-        if($data['has_follow_up'] == 1) {
+        if ($data['has_follow_up'] == 1) {
             $data['follow_up_schedule'] = to_sql_date($data['follow_up_schedule'], true);
-        }else{
+        } else {
             $data['follow_up_schedule'] = 'NULL';
         }
         $data['dateadded'] = date('Y-m-d H:i:s');
 
-        $diff = Carbon::parse($data['call_end_time'])->diffInHours(Carbon::parse($data['call_start_time'])) . ':' .  Carbon::parse($data['call_end_time'])->diff(Carbon::parse($data['call_start_time']))->format('%I:%S');
+        $diff = Carbon::parse($data['call_end_time'])->diffInHours(Carbon::parse($data['call_start_time'])) . ':' . Carbon::parse($data['call_end_time'])->diff(Carbon::parse($data['call_start_time']))->format('%I:%S');
         $data['call_duration'] = $diff;
 
         $this->db->insert(db_prefix() . 'call_logs', $data);
@@ -107,17 +108,17 @@ class Call_logs_model extends App_Model
     public function update($data, $id)
     {
         unset($data['lead_id']);
-        $data['staffid']      = $data['staffid'] == '' ? 0 : $data['staffid'];
-        $data['call_start_time']    = to_sql_date($data['call_start_time'], true);
-        $data['call_end_time']      = to_sql_date($data['call_end_time'], true);
-        if($data['has_follow_up'] == 1) {
+        $data['staffid'] = $data['staffid'] == '' ? 0 : $data['staffid'];
+        $data['call_start_time'] = to_sql_date($data['call_start_time'], true);
+        $data['call_end_time'] = to_sql_date($data['call_end_time'], true);
+        if ($data['has_follow_up'] == 1) {
             $data['follow_up_schedule'] = to_sql_date($data['follow_up_schedule'], true);
-        }else{
+        } else {
             $data['follow_up_schedule'] = 'NULL';
         }
         $data['dateaupdated'] = date('Y-m-d H:i:s');
 
-        $diff = Carbon::parse($data['call_end_time'])->diffInHours(Carbon::parse($data['call_start_time'])) . ':' .  Carbon::parse($data['call_end_time'])->diff(Carbon::parse($data['call_start_time']))->format('%I:%S');
+        $diff = Carbon::parse($data['call_end_time'])->diffInHours(Carbon::parse($data['call_start_time'])) . ':' . Carbon::parse($data['call_end_time'])->diff(Carbon::parse($data['call_start_time']))->format('%I:%S');
         $data['call_duration'] = $diff;
 
         $this->db->where('id', $id);
@@ -150,7 +151,8 @@ class Call_logs_model extends App_Model
     }
 
     /* Display all logs, which has notification as true. Notification Queue. */
-    public function get_notifiable_logs(){
+    public function get_notifiable_logs()
+    {
         $this->db->where('is_completed', 0);
         $this->db->where('has_follow_up', 1);
         $this->db->where('notified', 0);
@@ -175,14 +177,14 @@ class Call_logs_model extends App_Model
             $staff = $this->staff_model->get('', ['active' => 1, 'staffid' => $callLog->call_with_staffid]);
         } else if ($callLog->staffid > 0) {
             $this->db->where('active', 1)
-            ->where('staffid', $callLog->staffid);
+                ->where('staffid', $callLog->staffid);
             $staff = $this->db->get(db_prefix() . 'staff')->result_array();
-        }else {
+        } else {
             $this->load->model('staff_model');
             $staff = $this->staff_model->get('', ['active' => 1]);
         }
 
-        if($callLog->customer_type == 'customer') {
+        if ($callLog->customer_type == 'customer') {
             $oClient = $this->clients_model->get($callLog->clientid);
             if (!$oClient) {
                 return false;
@@ -193,7 +195,7 @@ class Call_logs_model extends App_Model
                 $contactName = $oCustomer[0]['firstname'] . ' ' . $oCustomer[0]['lastname'] . '<br>';
             }
             $contactName = $contactName . ' ' . $oClient->company;
-        }else{
+        } else {
             $this->load->model('leads_model');
             $oCustomer = $this->leads_model->get($callLog->clientid);
             $contactName = $oCustomer->name;
@@ -202,9 +204,9 @@ class Call_logs_model extends App_Model
         foreach ($staff as $member) {
             if (is_staff_member($member['staffid'])) {
                 $notified = add_notification([
-                    'fromcompany'     => 1,
-                    'touserid'        => $member['staffid'],
-                    'description'     => $callLog_desc,
+                    'fromcompany' => 1,
+                    'touserid' => $member['staffid'],
+                    'description' => $callLog_desc,
                     'additional_data' => serialize([
                         $contactName,
                         _d($callLog->follow_up_schedule),
@@ -254,29 +256,29 @@ class Call_logs_model extends App_Model
                 ";
         $query = $this->db->query($sql);
         $staffIds = $query->result_array();
-        foreach ($staffIds as $staffId){
+        foreach ($staffIds as $staffId) {
             $notifiedUsers = [];
 
             /** Daily Goal Notify */
-            $todayDate =  Carbon::now()->format('Y-m-d');
+            $todayDate = Carbon::now()->format('Y-m-d');
             $sql = "SELECT count(`id`) as totalCalls
-                from ".db_prefix()."call_logs where DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '".$todayDate."' AND '".$todayDate."' 
-                AND (`staffid` = ".$staffId['staff']." || `call_with_staffid` = ".$staffId['staff'].") 
-                " ;
+                from " . db_prefix() . "call_logs where DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '" . $todayDate . "' AND '" . $todayDate . "' 
+                AND (`staffid` = " . $staffId['staff'] . " || `call_with_staffid` = " . $staffId['staff'] . ") 
+                ";
             $query = $this->db->query($sql);
             $rowDaily = $query->row();
-            if((int) $cl_calls_daily_goal > 0 && $rowDaily->totalCalls > 0 && $rowDaily->totalCalls >= $cl_calls_daily_goal)  {
+            if ((int) $cl_calls_daily_goal > 0 && $rowDaily->totalCalls > 0 && $rowDaily->totalCalls >= $cl_calls_daily_goal) {
                 $sql = "SELECT *
-                from ".db_prefix()."call_logs_goals_notified where DATE_FORMAT(`notify_date`,'%Y-%m-%d') between '".$todayDate."' AND '".$todayDate."' 
-                AND `staffid` = ".$staffId['staff']." AND goal_type = 'daily' 
-                " ;
+                from " . db_prefix() . "call_logs_goals_notified where DATE_FORMAT(`notify_date`,'%Y-%m-%d') between '" . $todayDate . "' AND '" . $todayDate . "' 
+                AND `staffid` = " . $staffId['staff'] . " AND goal_type = 'daily' 
+                ";
                 $query = $this->db->query($sql);
                 $rowNotify = $query->row();
-                if(!$rowNotify){
+                if (!$rowNotify) {
                     $data = [
-                        'staffid'   => $staffId['staff'],
-                        'goal_type'   => 'daily',
-                        'notify_date'   => date('Y-m-d H:i:s'),
+                        'staffid' => $staffId['staff'],
+                        'goal_type' => 'daily',
+                        'notify_date' => date('Y-m-d H:i:s'),
                     ];
                     $this->db->insert(db_prefix() . 'call_logs_goals_notified', $data);
 
@@ -299,23 +301,23 @@ class Call_logs_model extends App_Model
             $currentMonth = Carbon::now()->format('m');
 
             $sql = "SELECT count(`id`) as totalCalls
-                from ".db_prefix()."call_logs where DATE_FORMAT(`call_start_time`,'%m') = '".$currentMonth."'  
-                AND (`staffid` = ".$staffId['staff']." || `call_with_staffid` = ".$staffId['staff'].") 
-                " ;
+                from " . db_prefix() . "call_logs where DATE_FORMAT(`call_start_time`,'%m') = '" . $currentMonth . "'  
+                AND (`staffid` = " . $staffId['staff'] . " || `call_with_staffid` = " . $staffId['staff'] . ") 
+                ";
             $query = $this->db->query($sql);
             $rowMonthly = $query->row();
-            if((int) $cl_calls_monthly_goal > 0 && $rowMonthly->totalCalls > 0 && $rowMonthly->totalCalls >= $cl_calls_monthly_goal)  {
+            if ((int) $cl_calls_monthly_goal > 0 && $rowMonthly->totalCalls > 0 && $rowMonthly->totalCalls >= $cl_calls_monthly_goal) {
                 $sql = "SELECT *
-                from ".db_prefix()."call_logs_goals_notified where DATE_FORMAT(`notify_date`,'%m') = '".$currentMonth."'  
-                AND `staffid` = ".$staffId['staff']." AND goal_type = 'monthly' 
-                " ;
+                from " . db_prefix() . "call_logs_goals_notified where DATE_FORMAT(`notify_date`,'%m') = '" . $currentMonth . "'  
+                AND `staffid` = " . $staffId['staff'] . " AND goal_type = 'monthly' 
+                ";
                 $query = $this->db->query($sql);
                 $rowNotify = $query->row();
-                if(!$rowNotify){
+                if (!$rowNotify) {
                     $data = [
-                        'staffid'   => $staffId['staff'],
-                        'goal_type'   => 'monthly',
-                        'notify_date'   => date('Y-m-d H:i:s'),
+                        'staffid' => $staffId['staff'],
+                        'goal_type' => 'monthly',
+                        'notify_date' => date('Y-m-d H:i:s'),
                     ];
                     $this->db->insert(db_prefix() . 'call_logs_goals_notified', $data);
 
@@ -333,7 +335,7 @@ class Call_logs_model extends App_Model
                 }
             }
             /** End Monthly Goal Notify */
-            if(sizeof($notifiedUsers)) {
+            if (sizeof($notifiedUsers)) {
                 pusher_trigger_notification($notifiedUsers);
             }
         }
@@ -342,27 +344,28 @@ class Call_logs_model extends App_Model
     }
 
     /* Count the total inbound and outbound calls. */
-    public function count_inbound_outbound_calls($start_date, $end_date, $staffid){
-        $result['inbound']  = 0;
+    public function count_inbound_outbound_calls($start_date, $end_date, $staffid)
+    {
+        $result['inbound'] = 0;
         $result['outbound'] = 0;
 
         $sql = "SELECT count(`call_direction`) as inbound
-                from ".db_prefix()."call_logs where call_direction = 1 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '".$start_date."' AND '".$end_date."' 
-                AND (`staffid` = ".$staffid." || `call_with_staffid` = ".$staffid.") 
-                " ;
+                from " . db_prefix() . "call_logs where call_direction = 1 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '" . $start_date . "' AND '" . $end_date . "' 
+                AND (`staffid` = " . $staffid . " || `call_with_staffid` = " . $staffid . ") 
+                ";
         $query = $this->db->query($sql);
         $row = $query->row();
-        if (isset($row)){
+        if (isset($row)) {
             $result['inbound'] = $row->inbound;
         }
 
         $sql = "SELECT count(`call_direction`) as outbound
-                from `".db_prefix()."call_logs` where call_direction = 2 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '".$start_date."' AND '".$end_date."' 
-                AND (`staffid` = ".$staffid." || `call_with_staffid` = ".$staffid.") 
-                " ;
+                from `" . db_prefix() . "call_logs` where call_direction = 2 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '" . $start_date . "' AND '" . $end_date . "' 
+                AND (`staffid` = " . $staffid . " || `call_with_staffid` = " . $staffid . ") 
+                ";
         $query = $this->db->query($sql);
         $row = $query->row();
-        if (isset($row)){
+        if (isset($row)) {
             $result['outbound'] = $row->outbound;
         }
 
@@ -370,28 +373,29 @@ class Call_logs_model extends App_Model
     }
 
     /* Get the inbound report for the overview tab. */
-    public function get_inbound_outbound_report($start_date, $end_date, $staffid){
-        $date_labels  = [];
+    public function get_inbound_outbound_report($start_date, $end_date, $staffid)
+    {
+        $date_labels = [];
         $total_inbound = [];
-        $total_outbound   = [];
-        $i              = 0;
+        $total_outbound = [];
+        $i = 0;
 
         $daysDiff = Carbon::parse($end_date)->diffInDays(Carbon::parse($start_date));
 
         for ($d = 0; $d <= $daysDiff; $d++) {
-            $filterDate =  Carbon::parse($start_date)->addDays($d)->format("Y-m-d");
+            $filterDate = Carbon::parse($start_date)->addDays($d)->format("Y-m-d");
             array_push($date_labels, _l(Carbon::parse($filterDate)->format('d M Y')));
 
             $inbound = 0;
             $outbound = 0;
 
             $sql = "SELECT count(`call_direction`) as inbound
-                from ".db_prefix()."call_logs where call_direction = 1 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '".$filterDate."' AND '".$filterDate."' 
-                AND (`staffid` = ".$staffid." || `call_with_staffid` = ".$staffid.") 
-                " ;
+                from " . db_prefix() . "call_logs where call_direction = 1 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '" . $filterDate . "' AND '" . $filterDate . "' 
+                AND (`staffid` = " . $staffid . " || `call_with_staffid` = " . $staffid . ") 
+                ";
             $query = $this->db->query($sql);
             $row = $query->row();
-            if (isset($row)){
+            if (isset($row)) {
                 $inbound = $row->inbound;
             }
 
@@ -401,12 +405,12 @@ class Call_logs_model extends App_Model
             $total_inbound[$i] = $inbound;
 
             $sql = "SELECT count(`call_direction`) as outbound
-                from `".db_prefix()."call_logs` where call_direction = 2 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '".$filterDate."' AND '".$filterDate."' 
-                AND (`staffid` = ".$staffid." || `call_with_staffid` = ".$staffid.") 
-                " ;
+                from `" . db_prefix() . "call_logs` where call_direction = 2 AND DATE_FORMAT(`call_start_time`,'%Y-%m-%d') between '" . $filterDate . "' AND '" . $filterDate . "' 
+                AND (`staffid` = " . $staffid . " || `call_with_staffid` = " . $staffid . ") 
+                ";
             $query = $this->db->query($sql);
             $row = $query->row();
-            if (isset($row)){
+            if (isset($row)) {
                 $outbound = $row->outbound;
             }
 
@@ -419,23 +423,23 @@ class Call_logs_model extends App_Model
         }
 
         $chart = [
-            'labels'   => $date_labels,
+            'labels' => $date_labels,
             'datasets' => [
                 [
-                    'label'           => _l('cl_report_inbound_calls'),
+                    'label' => _l('cl_report_inbound_calls'),
                     'backgroundColor' => 'rgba(51, 122, 183,0.8)',
-                    'borderColor'     => '#337ab7',
-                    'borderWidth'     => 1,
-                    'tension'         => false,
-                    'data'            => $total_inbound,
+                    'borderColor' => '#337ab7',
+                    'borderWidth' => 1,
+                    'tension' => false,
+                    'data' => $total_inbound,
                 ],
                 [
-                    'label'           => _l('cl_report_outbound_calls'),
+                    'label' => _l('cl_report_outbound_calls'),
                     'backgroundColor' => 'rgba(60, 118, 61,0.8)',
-                    'borderColor'     => '#3c763d',
-                    'borderWidth'     => 1,
-                    'tension'         => false,
-                    'data'            => $total_outbound,
+                    'borderColor' => '#3c763d',
+                    'borderWidth' => 1,
+                    'tension' => false,
+                    'data' => $total_outbound,
                 ],
             ],
         ];
@@ -444,15 +448,15 @@ class Call_logs_model extends App_Model
     }
 
 
-    public function _search_proposals($q, $rel_type = '', $rel_id = 0, $limit =0)
+    public function _search_proposals($q, $rel_type = '', $rel_id = 0, $limit = 0)
     {
         $result = [
-            'result'         => [],
-            'type'           => 'proposals',
+            'result' => [],
+            'type' => 'proposals',
             'search_heading' => _l('proposals'),
         ];
 
-        $has_permission_view_proposals     = has_permission('proposals', '', 'view');
+        $has_permission_view_proposals = has_permission('proposals', '', 'view');
         $has_permission_view_proposals_own = has_permission('proposals', '', 'view_own');
 
         if ($has_permission_view_proposals || $has_permission_view_proposals_own || get_option('allow_staff_view_proposals_assigned') == '1') {
@@ -476,7 +480,7 @@ class Call_logs_model extends App_Model
                 $this->db->where($noPermissionQuery);
             }
 
-            if($rel_id !=0 && $rel_type != ''){
+            if ($rel_id != 0 && $rel_type != '') {
                 $this->db->where('rel_type', $rel_type);
                 $this->db->where('rel_id', $rel_id);
             }
@@ -505,15 +509,15 @@ class Call_logs_model extends App_Model
     }
 
 
-    public function _search_estimates($q, $rel_type = '', $rel_id = 0, $limit =0)
+    public function _search_estimates($q, $rel_type = '', $rel_id = 0, $limit = 0)
     {
         $result = [
-            'result'         => [],
-            'type'           => 'estimates',
+            'result' => [],
+            'type' => 'estimates',
             'search_heading' => _l('estimates'),
         ];
 
-        $has_permission_view_estimates     = has_permission('estimates', '', 'view');
+        $has_permission_view_estimates = has_permission('estimates', '', 'view');
         $has_permission_view_estimates_own = has_permission('estimates', '', 'view_own');
 
         if ($has_permission_view_estimates || $has_permission_view_estimates_own || get_option('allow_staff_view_estimates_assigned') == '1') {
@@ -526,8 +530,8 @@ class Call_logs_model extends App_Model
                 $q = ltrim($q, '0');
             }
             // Estimates
-            $estimates_fields  = prefixed_table_fields_array(db_prefix() . 'estimates');
-            $clients_fields    = prefixed_table_fields_array(db_prefix() . 'clients');
+            $estimates_fields = prefixed_table_fields_array(db_prefix() . 'estimates');
+            $clients_fields = prefixed_table_fields_array(db_prefix() . 'clients');
             $noPermissionQuery = get_estimates_where_sql_for_staff(get_staff_user_id());
 
             $this->db->select(implode(',', $estimates_fields) . ',' . implode(',', $clients_fields) . ',' . db_prefix() . 'estimates.id as estimateid,' . get_sql_select_client_company());
@@ -540,7 +544,7 @@ class Call_logs_model extends App_Model
                 $this->db->where($noPermissionQuery);
             }
 
-            if($rel_id !=0 && $rel_type == 'customer'){
+            if ($rel_id != 0 && $rel_type == 'customer') {
                 $this->db->where('clientid', $rel_id);
             }
 
@@ -801,4 +805,103 @@ class Call_logs_model extends App_Model
 
         return false;
     }
+
+
+    // CUSTOM CODE FOR CUSTOM TELE-SALES REPORT
+
+    // public function get_total_calls($start_date, $end_date)
+    // {
+    //     $this->db->select('COUNT(*) AS total_calls');
+    //     $this->db->from('tblcall_logs');
+    //     $this->db->where('call_start_time >=', $start_date);
+    //     $this->db->where('call_start_time <=', $end_date);
+    //     $result = $this->db->get()->row();
+    //     return $result ? $result->total_calls : 0;
+    // }
+
+    // public function get_call_duration($start_date, $end_date)
+    // {
+    //     $this->db->select('staffid, SUM(TIME_TO_SEC(call_duration)) AS total_duration');
+    //     $this->db->from('tblcall_logs');
+    //     $this->db->where('call_start_time >=', $start_date);
+    //     $this->db->where('call_start_time <=', $end_date);
+    //     $this->db->group_by('staffid');
+    //     return $this->db->get()->result_array();
+    // }
+
+    // public function get_call_outcomes($start_date, $end_date)
+    // {
+    //     $this->db->select('
+    //         SUM(is_completed = 1) AS successful_calls,
+    //         SUM(is_completed = 0) AS unsuccessful_calls,
+    //         SUM(has_follow_up = 1) AS follow_up_required
+    //     ');
+    //     $this->db->from('tblcall_logs');
+    //     $this->db->where('call_start_time >=', $start_date);
+    //     $this->db->where('call_start_time <=', $end_date);
+    //     return $this->db->get()->row_array();
+    // }
+
+    // public function get_lead_sources_statuses($start_date, $end_date)
+    // {
+    //     $this->db->select('
+    //         ls.name AS lead_source,
+    //         lstatus.name AS lead_status,
+    //         COUNT(*) AS total_leads
+    //     ');
+    //     $this->db->from('tblleads AS l');
+    //     $this->db->join('tblleads_sources AS ls', 'l.source = ls.id', 'left');
+    //     $this->db->join('tblleads_status AS lstatus', 'l.status = lstatus.id', 'left');
+    //     $this->db->where('l.dateadded >=', $start_date);
+    //     $this->db->where('l.dateadded <=', $end_date);
+    //     $this->db->group_by('lead_source, lead_status');
+    //     return $this->db->get()->result_array();
+    // }
+
+    // public function get_salesperson_performance($start_date, $end_date)
+    // {
+    //     $this->db->select('
+    //         staffid,
+    //         COUNT(*) AS total_calls,
+    //         SUM(TIME_TO_SEC(call_duration)) AS total_duration,
+    //         SUM(is_completed = 1) AS successful_calls
+    //     ');
+    //     $this->db->from('tblcall_logs');
+    //     $this->db->where('call_start_time >=', $start_date);
+    //     $this->db->where('call_start_time <=', $end_date);
+    //     $this->db->group_by('staffid');
+    //     return $this->db->get()->result_array();
+    // }
+
+    // public function get_calls_results($start_date, $end_date)
+    // {
+    //     $this->db->select('
+    //         r.name AS result,
+    //         COUNT(*) AS total_count
+    //     ');
+    //     $this->db->from('tblcall_logs AS c');
+    //     $this->db->join('tblcall_logs_rel_types AS r', 'c.rel_type = r.id', 'left');
+    //     $this->db->where('c.call_start_time >=', $start_date);
+    //     $this->db->where('c.call_start_time <=', $end_date);
+    //     $this->db->group_by('result');
+    //     return $this->db->get()->result_array();
+    // }
+
+    // public function get_lead_reports($start_date, $end_date)
+    // {
+    //     $this->db->select('
+    //         l.name AS lead_name,
+    //         ls.name AS lead_source,
+    //         lstatus.name AS lead_status,
+    //         COUNT(*) AS total_calls
+    //     ');
+    //     $this->db->from('tblcall_logs AS c');
+    //     $this->db->join('tblleads AS l', 'c.clientid = l.id', 'left');
+    //     $this->db->join('tblleads_sources AS ls', 'l.source = ls.id', 'left');
+    //     $this->db->join('tblleads_status AS lstatus', 'l.status = lstatus.id', 'left');
+    //     $this->db->where('c.call_start_time >=', $start_date);
+    //     $this->db->where('c.call_start_time <=', $end_date);
+    //     $this->db->group_by('lead_name, lead_source, lead_status');
+    //     return $this->db->get()->result_array();
+    // }
 }

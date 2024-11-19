@@ -103,8 +103,8 @@ if ($lead['status'] == $status['id']) { ?>
                 <p class="bold tw-text-sm">
                     <?php echo ($lead['phonenumber'] != '' ? '<a href="tel:' . e($lead['phonenumber']) . '">' . e($lead['phonenumber']) . '</a>' : '-') ?>
                 </p>
-                <p class="text-muted lead-field-heading"><?php echo _l('lead_company'); ?></p>
-                <p class="bold tw-text-sm"><?php echo e($lead['company'] != '' ? $lead['company'] : '-') ?></p>
+                <!-- <p class="text-muted lead-field-heading"><?php echo _l('lead_company'); ?></p>
+                <p class="bold tw-text-sm"><?php echo e($lead['company'] != '' ? $lead['company'] : '-') ?></p> -->
                 <p class="text-muted lead-field-heading"><?php echo _l('lead_address'); ?></p>
                 <p class="bold tw-text-sm"><?php echo e($lead['address'] != '' ? $lead['address'] : '-') ?></p>
                 <p class="text-muted lead-field-heading"><?php echo _l('lead_city'); ?></p>

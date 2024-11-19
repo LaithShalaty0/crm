@@ -74,6 +74,53 @@ class Leads extends AdminController
     }
 
     /* Add or update lead */
+    // public function lead($id = '')
+    // {
+    //     if (!is_staff_member() || ($id != '' && !$this->leads_model->staff_can_access_lead($id))) {
+    //         ajax_access_denied();
+    //     }
+
+    //     if ($this->input->post()) {
+    //         if ($id == '') {
+    //             $id      = $this->leads_model->add($this->input->post());
+    //             $message = $id ? _l('added_successfully', _l('lead')) : '';
+
+    //             echo json_encode([
+    //                 'success'  => $id ? true : false,
+    //                 'id'       => $id,
+    //                 'message'  => $message,
+    //                 'leadView' => $id ? $this->_get_lead_data($id) : [],
+    //             ]);
+    //         } else {
+    //             $emailOriginal   = $this->db->select('email')->where('id', $id)->get(db_prefix() . 'leads')->row()->email;
+    //             $proposalWarning = false;
+    //             $message         = '';
+    //             $success         = $this->leads_model->update($this->input->post(), $id);
+
+    //             if ($success) {
+    //                 $emailNow = $this->db->select('email')->where('id', $id)->get(db_prefix() . 'leads')->row()->email;
+
+    //                 $proposalWarning = (total_rows(db_prefix() . 'proposals', [
+    //                     'rel_type' => 'lead',
+    //                     'rel_id'   => $id, ]) > 0 && ($emailOriginal != $emailNow) && $emailNow != '') ? true : false;
+
+    //                 $message = _l('updated_successfully', _l('lead'));
+    //             }
+    //             echo json_encode([
+    //                 'success'          => $success,
+    //                 'message'          => $message,
+    //                 'id'               => $id,
+    //                 'proposal_warning' => $proposalWarning,
+    //                 'leadView'         => $this->_get_lead_data($id),
+    //             ]);
+    //         }
+    //         die;
+    //     }
+
+    //     echo json_encode([
+    //         'leadView' => $this->_get_lead_data($id),
+    //     ]);
+    // }
     public function lead($id = '')
     {
         if (!is_staff_member() || ($id != '' && !$this->leads_model->staff_can_access_lead($id))) {
@@ -81,6 +128,31 @@ class Leads extends AdminController
         }
 
         if ($this->input->post()) {
+            // Saudi phone number validation pattern
+            $pattern = '/^(?:\+966|0)?5[0-9]{8}$/';
+            $phonenumber = $this->input->post('phonenumber');
+
+            // Check if phone number is present
+            if (empty($phonenumber)) {
+                // If phone number is not provided, return error response
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Phone number is required. Please enter a valid Saudi phone number.',
+                ]);
+                die;
+            }
+
+            // Check if phone number matches the required format
+            if (!preg_match($pattern, $phonenumber)) {
+                // If phone validation fails, return error response
+                log_message('error', 'Phone validation failed for number: ' . $phonenumber);
+                echo json_encode([
+                    'success' => false,
+                    'message' => 'Invalid phone number. Please enter a valid Saudi phone number.',
+                ]);
+                die;
+            }
+
             if ($id == '') {
                 $id      = $this->leads_model->add($this->input->post());
                 $message = $id ? _l('added_successfully', _l('lead')) : '';
@@ -102,7 +174,8 @@ class Leads extends AdminController
 
                     $proposalWarning = (total_rows(db_prefix() . 'proposals', [
                         'rel_type' => 'lead',
-                        'rel_id'   => $id, ]) > 0 && ($emailOriginal != $emailNow) && $emailNow != '') ? true : false;
+                        'rel_id'   => $id,
+                    ]) > 0 && ($emailOriginal != $emailNow) && $emailNow != '') ? true : false;
 
                     $message = _l('updated_successfully', _l('lead'));
                 }
@@ -142,16 +215,16 @@ class Leads extends AdminController
                 die;
             }
 
-            if (total_rows(db_prefix() . 'clients', ['leadid' => $id ]) > 0) {
+            if (total_rows(db_prefix() . 'clients', ['leadid' => $id]) > 0) {
                 $data['lead_locked'] = ((!is_admin() && get_option('lead_lock_after_convert_to_customer') == 1) ? true : false);
             }
 
             $reminder_data = $this->load->view('admin/includes/modals/reminder', [
-                    'id'             => $lead->id,
-                    'name'           => 'lead',
-                    'members'        => $data['members'],
-                    'reminder_title' => _l('lead_set_reminder_title'),
-                ], true);
+                'id'             => $lead->id,
+                'name'           => 'lead',
+                'members'        => $data['members'],
+                'reminder_title' => _l('lead_set_reminder_title'),
+            ], true);
 
             $data['lead']          = $lead;
             $data['mail_activity'] = $this->leads_model->get_mail_activity($id);
@@ -197,12 +270,12 @@ class Leads extends AdminController
         $status = $this->db->get(db_prefix() . 'leads_status')->row_array();
 
         $leads = (new LeadsKanban($status['id']))
-        ->search($this->input->get('search'))
-        ->sortBy(
-            $this->input->get('sort_by'),
-            $this->input->get('sort')
-        )
-        ->page($page)->get();
+            ->search($this->input->get('search'))
+            ->sortBy(
+                $this->input->get('sort_by'),
+                $this->input->get('sort')
+            )
+            ->page($page)->get();
 
         foreach ($leads as $lead) {
             $this->load->view('admin/leads/_kan_ban_card', [
@@ -434,7 +507,7 @@ class Leads extends AdminController
                             'addedfrom'      => $note['addedfrom'],
                             'description'    => $note['description'],
                             'date_contacted' => $note['date_contacted'],
-                            ]);
+                        ]);
                     }
                 }
                 if (isset($consents)) {
@@ -797,10 +870,10 @@ class Leads extends AdminController
         $fields    = [
             'name',
             'title',
-            'email',
+            // 'email',
             'phonenumber',
             'lead_value',
-            'company',
+            // 'company',
             'address',
             'city',
             'state',
@@ -1209,18 +1282,20 @@ class Leads extends AdminController
 
         $this->load->library('import/import_leads', [], 'import');
         $this->import->setDatabaseFields($dbFields)
-        ->setCustomFields(get_custom_fields('leads'));
+            ->setCustomFields(get_custom_fields('leads'));
 
         if ($this->input->post('download_sample') === 'true') {
             $this->import->downloadSample();
         }
 
-        if ($this->input->post()
-            && isset($_FILES['file_csv']['name']) && $_FILES['file_csv']['name'] != '') {
+        if (
+            $this->input->post()
+            && isset($_FILES['file_csv']['name']) && $_FILES['file_csv']['name'] != ''
+        ) {
             $this->import->setSimulation($this->input->post('simulate'))
-                          ->setTemporaryFileLocation($_FILES['file_csv']['tmp_name'])
-                          ->setFilename($_FILES['file_csv']['name'])
-                          ->perform();
+                ->setTemporaryFileLocation($_FILES['file_csv']['tmp_name'])
+                ->setFilename($_FILES['file_csv']['name'])
+                ->perform();
 
             $data['total_rows_post'] = $this->import->totalRows();
 
@@ -1256,7 +1331,7 @@ class Leads extends AdminController
                 }
             }
 
-            echo total_rows(db_prefix() . 'leads', [ $field => $value ]) > 0 ? 'false' : 'true';
+            echo total_rows(db_prefix() . 'leads', [$field => $value]) > 0 ? 'false' : 'true';
         }
     }
 

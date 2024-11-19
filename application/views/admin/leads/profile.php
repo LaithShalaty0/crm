@@ -160,11 +160,11 @@
                     <dd class="tw-text-neutral-900 tw-mt-1">
                         <?php echo(isset($lead) && $lead->title != '' ? e($lead->title) : '-') ?>
                     </dd>
-                    <dt class="lead-field-heading tw-font-medium tw-text-neutral-500">
+                    <!-- <dt class="lead-field-heading tw-font-medium tw-text-neutral-500">
                         <?php echo _l('lead_add_edit_email'); ?></dt>
                     <dd class="tw-text-neutral-900 tw-mt-1">
                         <?php echo(isset($lead) && $lead->email != '' ? '<a href="mailto:' . e($lead->email) . '">' . e($lead->email) . '</a>' : '-') ?>
-                    </dd>
+                    </dd> -->
                     <dt class="lead-field-heading tw-font-medium tw-text-neutral-500"><?php echo _l('lead_website'); ?>
                     </dt>
                     <dd class="tw-text-neutral-900 tw-mt-1">
@@ -180,11 +180,11 @@
                     <dd class="tw-text-neutral-900 tw-mt-1">
                         <?php echo(isset($lead) && $lead->lead_value != 0 ? e(app_format_money($lead->lead_value, $base_currency->id)) : '-') ?>
                     </dd>
-                    <dt class="lead-field-heading tw-font-medium tw-text-neutral-500"><?php echo _l('lead_company'); ?>
+                    <!-- <dt class="lead-field-heading tw-font-medium tw-text-neutral-500"><?php echo _l('lead_company'); ?>
                     </dt>
                     <dd class="tw-text-neutral-900 tw-mt-1">
                         <?php echo(isset($lead) && $lead->company != '' ? e($lead->company) : '-') ?></dd>
-                    <dt class="lead-field-heading tw-font-medium tw-text-neutral-500"><?php echo _l('lead_address'); ?>
+                    <dt class="lead-field-heading tw-font-medium tw-text-neutral-500"><?php echo _l('lead_address'); ?> -->
                     </dt>
                     <dd class="tw-text-neutral-900 tw-mt-1">
                     <?php echo(isset($lead) && $lead->address != '' ? process_text_content_for_display($lead->address) : '-') ?></dd>
@@ -372,8 +372,8 @@
                 <?php echo render_input('name', 'lead_add_edit_name', $value); ?>
                 <?php $value = (isset($lead) ? $lead->title : ''); ?>
                 <?php echo render_input('title', 'lead_title', $value); ?>
-                <?php $value = (isset($lead) ? $lead->email : ''); ?>
-                <?php echo render_input('email', 'lead_add_edit_email', $value); ?>
+                <!-- <?php $value = (isset($lead) ? $lead->email : ''); ?>
+                <?php echo render_input('email', 'lead_add_edit_email', $value); ?> -->
                 <?php if ((isset($lead) && empty($lead->website)) || !isset($lead)) {
                    $value = (isset($lead) ? $lead->website : '');
                    echo render_input('website', 'lead_website', $value);
@@ -407,8 +407,8 @@
                     </div>
                     </label>
                 </div>
-                <?php $value = (isset($lead) ? $lead->company : ''); ?>
-                <?php echo render_input('company', 'lead_company', $value); ?>
+                <!-- <?php $value = (isset($lead) ? $lead->company : ''); ?>
+                <?php echo render_input('company', 'lead_company', $value); ?> -->
             </div>
             <div class="col-md-6">
                 <?php $value = (isset($lead) ? $lead->address : ''); ?>
