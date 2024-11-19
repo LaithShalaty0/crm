@@ -1,0 +1,54 @@
+.ap-auto-margin {
+	margin: auto;
+}
+
+.ap-danger {
+	font-size: 16px; 
+	background-color: #626f80;
+    color: white;
+    padding: 10px;
+}
+
+.ap-font-500 {
+	font-weight: 500;
+}
+
+.ap-margin-right-5 {
+    margin-right: 5px;
+}
+
+.ap-margin-left-20 {
+    margin-left: 20px;
+}
+
+.ap-margin-left-10 {
+    margin-left: 10px;
+}
+
+.ap-width400-left-20 {
+    max-width: 400px;
+	margin-left: 20px;
+}
+
+.ap-float-right {
+	float: right;
+}
+	
+.ap-calc100-20left {
+    width: calc(100% - 650px);
+	margin-left: -20px;
+}
+
+.ap-width65 {
+	width: 65%;
+}
+
+.ap-minmap-icon {
+	background-image: url('/modules/account_planning/assets/plugins/tinymce/plugins/leaui_mindmap/icon.png');
+}
+
+#hot-display-license-info { 
+	display: none !important; 
+}
+
+

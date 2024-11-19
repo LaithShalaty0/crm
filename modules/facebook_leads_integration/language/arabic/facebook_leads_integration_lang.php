@@ -1,0 +1,27 @@
+<?php
+$lang['app_id']                                                     = 'Facebook Application ID';
+$lang['action']                                                     = 'Action';
+$lang['page_name']                                                  = 'Page Name';
+$lang['fetch_facebook_pages']                                       = 'Fetch Facebook Pages';
+$lang['fbleadssubscribe']                                           = 'Monitor Page Leads';
+$lang['fbleadsunsubscribe']                                         = 'Unmonitor';
+$lang['facebok_form_instructions']                                  = 'Available fields';
+$lang['instruction_about_facebook_form_field_key']                  = 'Your Facebook Lead forms must/can contain the following fields:';
+$lang['required_varibales']                                         = 'Required Fields';
+$lang['optional_variables']                                         = 'Optional Fields';
+$lang['verify_token']                                               = 'Webhook Verify Token (you can change this if you want)';
+$lang['newleads_settings']                                          = 'Select an operator/source and status for Leads that will be captured:';
+$lang['webhook_callback_url']                                       = 'Your unique webhook callback URL is:';
+$lang['long_life_access_token']                                     = 'Long Life Access Token';
+$lang['app_secret']                                                 = 'Facebook Application Secret';
+$lang['app_settings']                                               = 'Facebook Application Settings';
+$lang['get_token_link']                                             = 'Get Token';
+$lang['long_life_token_instructions']                               = 'Instructions to generate above Long Life Access Token';
+$lang['to_generate_long_life_token_instructions']                   = 'Copy the token and paste at given below link then click on Debug->Extend access token';
+$lang['token']                                                      = 'Token will appear when you list Facebook pages.';
+$lang['facebook_leads_integration']                                 = 'Facebook Leads Integration';
+$lang['status']                                                     = 'Status';
+$lang['leadsmodule_settings']                                       = 'Module Settings';
+$lang['fetch_settings']                                             = 'Fetch/relist Facebook pages';
+$lang['no_page_subscribed_yet']                                     = 'No page subscribed yet.';
+$lang['no_page_have_to_subscribe']                                  = 'No page have to subscribe.';

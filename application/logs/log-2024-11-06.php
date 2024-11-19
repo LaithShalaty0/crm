@@ -1,0 +1,20 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-11-06 02:21:24 --> 404 Page Not Found: /index
+ERROR - 2024-11-06 11:11:21 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:11:24 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:11:24 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:11:27 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:11:29 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:12:22 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:45:33 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:45:35 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 11:46:13 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 15:59:24 --> Could not find the language line "@إشارة"
+ERROR - 2024-11-06 21:26:20 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 21:26:24 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 21:26:30 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 21:26:37 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 21:27:12 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 21:27:29 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-06 21:27:41 --> Could not find the language line "Project Statuses"

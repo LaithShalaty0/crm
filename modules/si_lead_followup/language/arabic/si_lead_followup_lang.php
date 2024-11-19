@@ -1,0 +1,27 @@
+<?php
+$lang["si_lead_followup"] = "جدولة متابعة العملاء المحتملين";
+$lang["si_lead_followup_menu"] = "متابعة العملاء المحتملين";
+$lang["si_lead_followup_schedule_send_submenu"] = "إدارة الجدول الزمني";
+$lang["si_lead_followup_settings"] = "إعدادات متابعة العملاء المحتملين";
+$lang["si_lead_followup_settings_activation_code"] = "أدخل رمز شراء ترخيص الوحدة النمطية";
+$lang["si_lead_followup_settings_purchase_code_help"] = "لقد تلقيت رمز الشراء في بريدك الإلكتروني أثناء قيامك بشراء هذه الوحدة. يرجى إضافة هذا الرمز هنا والتحقق من صحته لتفعيل هذه الوحدة.";
+$lang["si_lead_followup_settings_tab1"] = "إعدادات متابعة العملاء المحتملين";
+$lang["si_lead_followup_settings_validate"] = "التحقق من صحة";
+$lang["si_lead_followup_settings_valid_purchase_help"] = "يوصى بشراء هذه الوحدة فقط من <a href='https://codecanyon.net/user/sejalinfotech/portfolio' target='_blank'>https://codecanyon.net/</a>. لا تقم بشراء البرنامج النصي من مواقع الويب الفارغة الأخرى. إنهم غير مصرح لهم ببيع هذا البرنامج النصي وقد يقومون بتغيير الوحدة وربط الكود ببرامج ضارة أو كود ضار يمكن أن يسبب ضررًا لخادمك.<br>";
+$lang["si_lfs_add"] = "إضافة";
+$lang["si_lfs_alphanumeric_validation"] = "الحروف والأرقام والشرطات السفلية فقط من فضلك";
+$lang["si_lfs_name"] = "اسم الجدول الزمني";
+$lang["si_lfs_schedule_add"] = "إضافة الرسائل القصيرة المجدولة";
+$lang["si_lfs_schedule_days"] = "Auto send reminderإرسال تذكير تلقائي بعد (أيام) after (days)";
+$lang["si_lfs_schedule_days_info"] = "ضع في اعتبارك الأيام التي تلي تاريخ إنشاء العميل المتوقع";
+$lang["si_lfs_schedule_error_message"] = "هناك بعض المشاكل في حفظ جدول الرسائل القصيرة";
+$lang["si_lfs_schedule_executed_list_info"] = "تم التنفيذ بنجاح لمتابعة %s";
+$lang["si_lfs_schedule_hour"] = "جدولة ساعة";
+$lang["si_lfs_schedule_last_executed"] = "آخر تنفيذ";
+$lang["si_lfs_schedule_send_title"] = "قائمة المتابعة المجدولة للعميل المحتمل";
+$lang["si_lfs_schedule_send_title_info"] = "أنشئ جدولًا زمنيًا للعملاء المحتملين لتلقي تذكير المتابعة عن طريق إرسال رسالة نصية قصيرة إلى رقم اتصال العميل المتوقع.";
+$lang["si_lfs_schedule_staff_leads_comment"] = "لـ %s - %s";
+$lang["si_lfs_schedule_success_activity_log_text"] = "%s تم تنفيذ جدول متابعة العميل المتوقع";
+$lang["si_lfs_sent_error_message"] = "لم يتم العثور على جهات اتصال لديها رقم هاتف صالح لإرسال الرسائل القصيرة";
+$lang["si_lfs_staff_assigned"] = "أرسل إلى الموظفين المعينين للعملاء المحتملين";
+$lang["si_lfs_text"] = "نص الرسائل القصيرة";

@@ -1,0 +1,43 @@
+
+.ui-widget-header {
+    border: 1px solid #fff !important;
+    background: #eaeaea !important;
+}
+.ui-widget.ui-widget-content {
+    border: 1px solid #e2e2e2 !important;
+    background: #fff !important;
+}
+
+[id^=frmb-][id$='-form-wrap'] .frmb {
+    margin: 0 20px 0 0!important;
+}
+
+.ui-state-default{	
+	border: 1px solid #c7c7c7 !important;
+    background: #f3f3f3 !important;
+}
+.ui-state-default a{
+    color: #228dcd !important;
+    outline: none;
+}
+
+.ui-state-active, .ui-state-default:hover{
+	border: 1px solid #c7c7c7 !important;
+	border-bottom: none !important;
+    background: #ffffff !important;
+}
+
+.ui-tab:last-child, .ui-tab:last-child:hover{
+	border: 1px solid #165e8a !important;
+    background: #228dcd !important;
+}
+
+
+.ui-tab:last-child a, .ui-tab:last-child:hover a {
+    color: #fff !important;
+}
+
+li.input-set-control.input-set-0.ui-sortable-handle:before {
+  content: "</>";
+  font-weight: 900;
+}

@@ -1,0 +1,19 @@
+<?php
+$lang["si_lead_filters"] = "مرشحات الرصاص SI";
+$lang["si_lead_filters_menu"] = "مرشحات العملاء المحتملين SI";
+$lang["si_lf_add_lead_filter"] = "إضافة فلتر للعملاء المحتملين";
+$lang["si_lf_apply_filter"] = "تطبيق الفلتر";
+$lang["si_lf_created_date"] = "تاريخ الإنشاء";
+$lang["si_lf_delete_confirm"] = "هل أنت متأكد أنك تريد حذف قالب الفلتر هذا؟";
+$lang["si_lf_filter_by_type"] = "نوع العميل المحتمل";
+$lang["si_lf_filter_name"] = "اسم الفلتر";
+$lang["si_lf_filter_templates"] = "قائمة قوالب التصفية";
+$lang["si_lf_filter_template_name"] = "حفظ كقالب عامل التصفية (أضف اسم عامل التصفية هنا)";
+$lang["si_lf_hide_export_columns"] = "إخفاء أعمدة التصدير";
+$lang["si_lf_last_contacted_date"] = "آخر اتصال";
+$lang["si_lf_lead_filter_by_date"] = "تصفية حسب التاريخ";
+$lang["si_lf_no_filter_template"] = "لم يتم حفظ أي قوالب تصفية";
+$lang["si_lf_save_filter_template"] = "حدد \"تم التحديد\" لحفظ قالب التصفية";
+$lang["si_lf_submenu_filter_templates"] = "قوالب تصفية العملاء المحتملين";
+$lang["si_lf_submenu_lead_filters"] = "فلترة العملاء المحتملين";
+$lang["si_lf_unknown"] = "مجهول";

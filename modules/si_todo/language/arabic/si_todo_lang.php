@@ -1,0 +1,19 @@
+<?php
+$lang["si_todo"] = "مدير المهام المتقدم";
+$lang["si_todo_add_category_title"] = "أضف فئة المهام";
+$lang["si_todo_alphanumeric_validation"] = "الحروف والأرقام والشرطات السفلية فقط من فضلك";
+$lang["si_todo_category"] = "فئة المهام";
+$lang["si_todo_category_color"] = "لون";
+$lang["si_todo_category_menu"] = "فئة المهام";
+$lang["si_todo_category_name"] = "اسم التصنيف";
+$lang["si_todo_dashboard_finished_limit"] = "لوحة التحكم أحدث حد للعرض النهائي";
+$lang["si_todo_dashboard_menu"] = "قائمة المهام الخاصة بي";
+$lang["si_todo_dashboard_unfinished_limit"] = "لوحة التحكم أحدث حد عرض غير مكتمل";
+$lang["si_todo_delete_validation"] = "هل أنت متأكد من الحذف؟\\nسيؤدي هذا إلى حذف كافة المهام الخاصة بهذه الفئة";
+$lang["si_todo_edit_category_title"] = "تحرير فئة المهام";
+$lang["si_todo_list_menu"] = "قائمة المهام";
+$lang["si_todo_main_menu"] = "ما يجب القيام به";
+$lang["si_todo_no_category_found"] = "لم يتم العثور على فئة المهام";
+$lang["si_todo_settings"] = "إعدادات المهام الخاصة بي";
+$lang["si_todo_settings_menu"] = "إعدادات";
+$lang["si_todo_todos_load_limit"] = "للقيام بتحميل حد عرض الصفحة";

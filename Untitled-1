@@ -1,0 +1,8 @@
+<?php
+function sum($a, $b) {
+    return $a + $b;
+}
+
+// Example usage:
+echo sum(3, 5); // Outputs: 8
+?>
