@@ -16,22 +16,22 @@ echo render_select('settings[leads_default_status]',$leads_statuses,array('id','
 <?php
 $savedValidation = json_decode(get_option('lead_unique_validation'));
 $validationFields = [
-  [
-    'value'=>'email',
-    'name'=>_l('lead_add_edit_email'),
-  ],
+  // [
+  //   'value'=>'email',
+  //   'name'=>_l('lead_add_edit_email'),
+  // ],
   [
     'value'=>'phonenumber',
     'name'=>_l('lead_add_edit_phonenumber'),
   ],
-  [
-    'value'=>'website',
-    'name'=>_l('lead_website'),
-  ],
-  [
-    'value'=>'company',
-    'name'=>_l('lead_company'),
-  ],
+  // [
+  //   'value'=>'website',
+  //   'name'=>_l('lead_website'),
+  // ],
+  // [
+  //   'value'=>'company',
+  //   'name'=>_l('lead_company'),
+  // ],
 ];
 $validationFields = hooks()->apply_filters('lead_available_dupicate_validation_fields_option', $validationFields);
 ?>

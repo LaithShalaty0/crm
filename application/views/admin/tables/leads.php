@@ -92,8 +92,8 @@ return App_table::find('leads')
             $aColumns[] = '1';
         }
         $aColumns = array_merge($aColumns, [
-            'company',
-            db_prefix() . 'leads.email as email',
+            // 'company',
+            // db_prefix() . 'leads.email as email',
             db_prefix() . 'leads.phonenumber as phonenumber',
             'lead_value',
             '(SELECT GROUP_CONCAT(name SEPARATOR ",") FROM ' . db_prefix() . 'taggables JOIN ' . db_prefix() . 'tags ON ' . db_prefix() . 'taggables.tag_id = ' . db_prefix() . 'tags.id WHERE rel_id = ' . db_prefix() . 'leads.id and rel_type="lead" ORDER by tag_order ASC LIMIT 1) as tags',
@@ -194,9 +194,9 @@ return App_table::find('leads')
                 }
                 $row[] = $consentHTML;
             }
-            $row[] = e($aRow['company']);
+            // $row[] = e($aRow['company']);
 
-            $row[] = ($aRow['email'] != '' ? '<a href="mailto:' . e($aRow['email']) . '">' . e($aRow['email']) . '</a>' : '');
+            // $row[] = ($aRow['email'] != '' ? '<a href="mailto:' . e($aRow['email']) . '">' . e($aRow['email']) . '</a>' : '');
 
             $row[] = ($aRow['phonenumber'] != '' ? '<a href="tel:' . e($aRow['phonenumber']) . '">' . e($aRow['phonenumber']) . '</a>' : '');
 

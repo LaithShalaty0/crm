@@ -123,10 +123,10 @@
                  'name'=>_l('lead_manager_dt_connect'),
                  'th_attrs'=>array('class'=>'toggleable', 'id'=>'th-connect')
               );
-                $_table_data[] = array(
-                 'name'=>_l('lead_company'),
-                 'th_attrs'=>array('class'=>'toggleable', 'id'=>'th-company')
-              );
+            //     $_table_data[] = array(
+            //      'name'=>_l('lead_company'),
+            //      'th_attrs'=>array('class'=>'toggleable', 'id'=>'th-company')
+            //   );
                 $_table_data[] =  array(
                  'name'=>_l('leads_dt_phonenumber'),
                  'th_attrs'=>array('class'=>'toggleable', 'id'=>'th-phone')
