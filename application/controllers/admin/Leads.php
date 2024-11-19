@@ -870,6 +870,7 @@ class Leads extends AdminController
         $fields    = [
             'name',
             'title',
+            // 'email',
             'phonenumber',
             'lead_value',
             // 'company',
