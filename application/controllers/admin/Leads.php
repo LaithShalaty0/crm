@@ -215,7 +215,6 @@ class Leads extends AdminController
                 die;
             }
 
-            if (total_rows(db_prefix() . 'clients', ['leadid' => $id ]) > 0) {
             if (total_rows(db_prefix() . 'clients', ['leadid' => $id]) > 0) {
                 $data['lead_locked'] = ((!is_admin() && get_option('lead_lock_after_convert_to_customer') == 1) ? true : false);
             }
