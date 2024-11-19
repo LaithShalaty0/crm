@@ -1,35 +1,54 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-ERROR - 2024-11-14 08:57:11 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 08:57:15 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 08:57:15 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 08:57:19 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 08:57:21 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 08:57:33 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 08:59:46 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 08:59:46 --> Severity: Warning --> Undefined variable $lead /home/tatwwcxl/crm.azyankhozam.com/application/views/admin/leads/lead.php 112
-ERROR - 2024-11-14 08:59:46 --> Severity: Warning --> Attempt to read property "id" on null /home/tatwwcxl/crm.azyankhozam.com/application/views/admin/leads/lead.php 112
-ERROR - 2024-11-14 10:39:04 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:39:06 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:41:11 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:41:13 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:41:47 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:41:48 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:42:39 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:42:43 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:42:46 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:42:48 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:42:50 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:42:59 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:43:05 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:43:45 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:43:58 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 10:44:09 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 13:51:48 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 13:51:52 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 13:51:54 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 13:51:56 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 13:52:04 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 15:58:18 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 15:58:24 --> Could not find the language line "Project Statuses"
-ERROR - 2024-11-14 15:58:32 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:22:28 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:22:29 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:22:36 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:22:36 --> Severity: Warning --> Undefined variable $lead C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 08:22:36 --> Severity: Warning --> Attempt to read property "id" on null C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 08:24:10 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:24:11 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:29:45 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:29:46 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:50:33 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:50:34 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:54:37 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:54:38 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:54:55 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 08:54:55 --> Severity: Warning --> Undefined variable $lead C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 08:54:55 --> Severity: Warning --> Attempt to read property "id" on null C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:10:00 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:10:01 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:10:09 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:10:09 --> Severity: error --> Exception: Unmatched '}' C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 375
+ERROR - 2024-11-14 09:10:34 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:10:35 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:10:36 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:10:37 --> Severity: Warning --> Undefined variable $lead C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:10:37 --> Severity: Warning --> Attempt to read property "id" on null C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:14:01 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:14:02 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:14:04 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:14:04 --> Severity: Warning --> Undefined variable $lead C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:14:04 --> Severity: Warning --> Attempt to read property "id" on null C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:17:33 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:17:35 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:17:38 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:17:38 --> Severity: Warning --> Undefined variable $lead C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:17:38 --> Severity: Warning --> Attempt to read property "id" on null C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:19:49 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:19:50 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:29:41 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:29:44 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:29:47 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:29:47 --> Severity: Warning --> Undefined variable $lead C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:29:47 --> Severity: Warning --> Attempt to read property "id" on null C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:29:47 --> Severity: error --> Exception: Unmatched '}' C:\xampp\htdocs\perfex\application\views\admin\leads\profile.php 141
+ERROR - 2024-11-14 09:33:25 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:33:26 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:33:28 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:33:28 --> Severity: Warning --> Undefined variable $lead C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:33:28 --> Severity: Warning --> Attempt to read property "id" on null C:\xampp\htdocs\perfex\application\views\admin\leads\lead.php 112
+ERROR - 2024-11-14 09:33:36 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:33:36 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:40:15 --> Could not find the language line "Project Statuses"
+ERROR - 2024-11-14 09:40:16 --> Could not find the language line "Project Statuses"
